@@ -18,13 +18,8 @@ http.listen(3000, function(){
 }); 
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
-      console.log('message: ' + msg);
-    });
-  });
-  io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' }); // This will emit the event to all connected sockets
-  io.on('connection', function(socket){
-    socket.on('chat message', function(msg){
       io.emit('chat message', msg);
     });
   });
+  io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' }); // This will emit the event to all connected sockets  
   
